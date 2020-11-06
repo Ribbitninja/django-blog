@@ -13,9 +13,6 @@ class CategoryInline(admin.TabularInline):
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    inlines = [
-        CategoryInline,
-    ]
     exclude = ('posts',)
 
 
