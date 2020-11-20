@@ -24,14 +24,18 @@ from django.views.generic.detail import DetailView
 #     context = {'posts': posts}
 #     return render(request, 'blogging/list.html', context)
 
+
 class BlogListView(ListView):
-    queryset = Post.objects.all().exclude(published_date=None).order_by('-published_date')
-    template_name = 'blogging/list.html'
+    queryset = Post.objects.exclude(published_date__exact=None).order_by(
+        "-published_date"
+    )
+    template_name = "blogging/list.html"
 
 
 class BlogDetailView(DetailView):
     model = Post
-    template_name = 'blogging/detail.html'
+    template_name = "blogging/detail.html"
+
 
 # def detail_view(request, post_id):
 #     published = Post.objects.exclude(published_date__exact=None)
